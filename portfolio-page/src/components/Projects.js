@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './Projects.css';
-import AddProject from './AddProject';
 
 const Projects = () => {
   const [projects, setProjects] = React.useState([]);
@@ -36,6 +35,7 @@ const Projects = () => {
     return projects.map(project => (
       <li key={project.id} className="project-item">
         {project.name} - {project.description}
+        <Link to={`/projects/add?id=${project.id}`} className="edit-button">Edit</Link>
         <button onClick={() => handleDelete(project.id)} className="delete-button">Delete</button>
       </li>
     ));

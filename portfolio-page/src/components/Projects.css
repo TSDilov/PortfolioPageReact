@@ -39,6 +39,7 @@
   border: none;
   padding: 5px 10px;
   cursor: pointer;
+  border-radius: 5px;
   margin-left: 10px; 
 }
 
@@ -61,5 +62,21 @@
 }
 
 .add-project-link:hover {
+  background-color: #2980b9;
+}
+
+.edit-button {
+  display: inline-block;
+  padding: 5px 10px;
+  margin-left: 10px;
+  background-color: #3498db;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 5px;
+  font-size: 14px;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.edit-button:hover {
   background-color: #2980b9;
 }

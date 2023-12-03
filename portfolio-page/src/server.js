@@ -9,6 +9,34 @@ app.use(cors());
 
 app.use(bodyParser.json());
 
+app.get('/api/projects', (req, res) => {
+    const projectsData = JSON.parse(fs.readFileSync('public/projects/projects.json', 'utf8'));
+    res.json(projectsData);
+});
+
+app.get('/api/projects/:id', (req, res) => {
+    try {
+      const filePath = 'public/projects/projects.json';
+  
+      if (fs.existsSync(filePath)) {
+        const projectsData = JSON.parse(fs.readFileSync(filePath, 'utf8'));
+        const projectId = parseInt(req.params.id);
+  
+        const project = projectsData.find((p) => p.id === projectId);
+  
+        if (project) {
+          res.json(project);
+        } else {
+          res.status(404).json({ error: 'Project not found' });
+        }
+      } else {
+        res.status(404).json({ error: 'Projects data file not found' });
+      }
+    } catch (error) {
+      console.error('Error fetching project data:', error);
+      res.status(500).json({ error: 'Internal server error' });
+    }
+  });
 app.post('/api/projects', (req, res) => {
   try {
     const projectsData = JSON.parse(fs.readFileSync('public/projects/projects.json', 'utf8'));
@@ -27,6 +55,26 @@ app.post('/api/projects', (req, res) => {
     console.error('Error adding project:', error);
     res.status(500).json({ success: false, error: 'Internal server error' });
   }
+});
+
+app.put('/api/projects/:id', (req, res) => {
+    const projectsData = JSON.parse(fs.readFileSync('public/projects/projects.json', 'utf8'));
+    const projectId = parseInt(req.params.id);
+  
+    const existingProjectIndex = projectsData.findIndex((p) => p.id === projectId);
+  
+    if (existingProjectIndex !== -1) {
+      const updatedProject = req.body;
+      updatedProject.id = projectId;
+  
+      projectsData[existingProjectIndex] = updatedProject;
+  
+      fs.writeFileSync('public/projects/projects.json', JSON.stringify(projectsData, null, 2));
+  
+      res.json({ success: true });
+    } else {
+      res.status(404).json({ error: 'Project not found' });
+    }
 });
 
 app.delete('/api/projects/:id', (req, res) => {
@@ -50,7 +98,7 @@ app.delete('/api/projects/:id', (req, res) => {
     console.error('Error deleting project:', error);
     res.status(500).json({ success: false, error: 'Internal Server Error' });
   }
-  });
+});
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
