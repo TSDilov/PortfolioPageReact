@@ -1,50 +1,65 @@
 .projects-container {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 20px;
-  }
-  
-  .project-title {
-    font-size: 36px;
-    color: #2c3e50;
-    margin-bottom: 20px;
-  }
-  
-  .project-list {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-  }
-  
-  .project-item {
-    font-size: 18px;
-    color: #333;
-    background-color: #ecf0f1;
-    padding: 10px;
-    margin-bottom: 10px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease-in-out;
-  }
-  
-  .project-item:hover {
-    transform: scale(1.05); 
-  }
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
 
-  .add-project-link {
-    display: inline-block;
-    padding: 10px 20px;
-    margin-top: 10px;
-    margin-bottom: 20px;
-    background-color: #3498db;
-    color: #fff;
-    text-decoration: none;
-    border-radius: 5px;
-    font-size: 16px;
-    font-weight: bold;
-    transition: background-color 0.3s ease-in-out;
-  }
-  
-  .add-project-link:hover {
-    background-color: #2980b9;
-  }
+.project-title {
+  font-size: 36px;
+  color: #2c3e50;
+  margin-bottom: 20px;
+}
+
+.project-list {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.project-item {
+  font-size: 18px;
+  color: #333;
+  background-color: #ecf0f1;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease-in-out;
+  display: flex;
+  justify-content: space-between;
+}
+
+.project-item:hover {
+  transform: scale(1.05);
+}
+
+.delete-button {
+  background-color: #ff4d4d;
+  color: #fff;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  margin-left: 10px; 
+}
+
+.delete-button:hover {
+  background-color: #ff3333;
+}
+
+.add-project-link {
+  display: inline-block;
+  padding: 10px 20px;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  background-color: #3498db;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 5px;
+  font-size: 16px;
+  font-weight: bold;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.add-project-link:hover {
+  background-color: #2980b9;
+}

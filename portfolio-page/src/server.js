@@ -29,6 +29,29 @@ app.post('/api/projects', (req, res) => {
   }
 });
 
+app.delete('/api/projects/:id', (req, res) => {
+    const projectId = parseInt(req.params.id);
+
+  try {
+    const projectsData = JSON.parse(fs.readFileSync('public/projects/projects.json', 'utf8'));
+
+    const projectIndex = projectsData.findIndex(project => project.id === projectId);
+
+    if (projectIndex !== -1) {
+      projectsData.splice(projectIndex, 1);
+
+      fs.writeFileSync('public/projects/projects.json', JSON.stringify(projectsData, null, 2));
+
+      res.json({ success: true, data: projectsData });
+    } else {
+      res.status(404).json({ success: false, error: 'Project not found' });
+    }
+  } catch (error) {
+    console.error('Error deleting project:', error);
+    res.status(500).json({ success: false, error: 'Internal Server Error' });
+  }
+  });
+
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });

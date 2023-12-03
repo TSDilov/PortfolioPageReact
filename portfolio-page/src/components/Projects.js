@@ -1,22 +1,42 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import './Projects.css';
 import AddProject from './AddProject';
 
 const Projects = () => {
-  const [projects, setProjects] = useState([]);
+  const [projects, setProjects] = React.useState([]);
 
-  useEffect(() => {
+  React.useEffect(() => {
     fetch('/projects/projects.json') 
       .then(response => response.json())
       .then(data => setProjects(data))
       .catch(error => console.error('Error fetching projects data:', error));
   }, []);
 
+  const handleDelete = async (projectId) => {
+    try {
+      const response = await fetch(`http://localhost:3001/api/projects/${projectId}`, {
+        method: 'DELETE',
+      });
+  
+      const result = await response.json();
+  
+      if (result.success) {
+        console.log('Project deleted successfully!');
+        setProjects(projects.filter(project => project.id !== projectId));
+      } else {
+        console.error('Failed to delete project:', result.error);
+      }
+    } catch (error) {
+      console.error('Error deleting project:', error);
+    }
+  };
+
   const renderProjects = () => {
     return projects.map(project => (
       <li key={project.id} className="project-item">
         {project.name} - {project.description}
+        <button onClick={() => handleDelete(project.id)} className="delete-button">Delete</button>
       </li>
     ));
   };
