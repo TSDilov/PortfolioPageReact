@@ -1,0 +1,51 @@
+.add-project-container {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+  }
+  
+  .add-project-container h2 {
+    font-family: 'Arial', sans-serif;
+    color: #333;
+  }
+  
+  .add-project-container form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .add-project-container label {
+    margin-bottom: 10px;
+    font-family: 'Arial', sans-serif;
+    color: #555;
+  }
+  
+  .add-project-container input,
+  .add-project-container textarea {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    font-family: 'Arial', sans-serif;
+    resize: vertical;
+  }
+  
+  .add-project-container button {
+    background-color: #3498db;
+    color: #fff;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    font-family: 'Arial', sans-serif;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+  }
+  
+  .add-project-container button:hover {
+    background-color: #2980b9;
+  }
