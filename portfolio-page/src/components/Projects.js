@@ -4,6 +4,7 @@ import './Projects.css';
 
 const Projects = () => {
   const [projects, setProjects] = React.useState([]);
+  const [selectedProjects, setSelectedProjects] = React.useState({});
 
   React.useEffect(() => {
     fetch('/projects/projects.json') 
@@ -31,13 +32,28 @@ const Projects = () => {
     }
   };
 
+  const handleItemClick = (projectId) => {
+    setSelectedProjects(prevState => ({
+      ...prevState,
+      [projectId]: !prevState[projectId],
+    }));
+  };
+
   const renderProjects = () => {
     return projects.map(project => (
-      <li key={project.id} className="project-item">
-        {project.name} - {project.description}
-        <Link to={`/projects/add?id=${project.id}`} className="edit-button">Edit</Link>
-        <button onClick={() => handleDelete(project.id)} className="delete-button">Delete</button>
-      </li>
+      <React.Fragment key={project.id}>
+        <li
+          className={`project-item ${selectedProjects[project.id] ? 'selected' : ''}`}
+          onClick={() => handleItemClick(project.id)}
+        >
+          {project.name}
+          <Link to={`/projects/add?id=${project.id}`} className="edit-button">Edit</Link>
+          <button onClick={() => handleDelete(project.id)} className="delete-button">Delete</button>
+        </li>
+        {selectedProjects[project.id] && (
+          <div className="description">{project.description}</div>
+        )}
+      </React.Fragment>
     ));
   };
 

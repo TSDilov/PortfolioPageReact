@@ -33,6 +33,20 @@
   transform: scale(1.05);
 }
 
+.project-item.selected {
+  background-color: #f0f0f0;
+}
+
+.description {
+  background-color: #f8f8f8;
+  padding: 10px;
+  border: 1px solid #ddd;
+  margin-top: 5px;
+  font-family: 'Arial', sans-serif;
+  font-size: 14px;
+  color: #333;
+}
+
 .delete-button {
   background-color: #ff4d4d;
   color: #fff;
