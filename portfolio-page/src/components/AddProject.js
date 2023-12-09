@@ -3,7 +3,7 @@ import { useNavigate, useLocation  } from 'react-router-dom';
 import './AddProject.css';
 
 const AddProject = () => {
-  const [newProject, setNewProject] = React.useState({ name: '', description: '' });
+  const [newProject, setNewProject] = React.useState({ name: '', description: '', projectUrl:'' });
   const navigate = useNavigate();
   const location = useLocation();
   const projectId = new URLSearchParams(location.search).get('id');
@@ -68,6 +68,15 @@ const AddProject = () => {
                 value={newProject.description}
                 onChange={handleChange}
                 required
+              />
+            </label>
+            <label>
+              Repository Link:
+              <input
+                type="text"
+                name="projectUrl"
+                value={newProject.projectUrl}
+                onChange={handleChange}
               />
             </label>
             <button type="submit">{projectId ? 'Edit Project' : 'Add Project'}</button>

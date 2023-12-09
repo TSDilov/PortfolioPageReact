@@ -49,6 +49,15 @@ const Projects = () => {
           {project.name}
           <Link to={`/projects/add?id=${project.id}`} className="edit-button">Edit</Link>
           <button onClick={() => handleDelete(project.id)} className="delete-button">Delete</button>
+          {project.projectUrl && (
+          <a 
+            href={project.projectUrl} 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            className="project-link">
+            Project Link
+          </a>
+        )}
         </li>
         {selectedProjects[project.id] && (
           <div className="description">{project.description}</div>

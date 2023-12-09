@@ -37,6 +37,25 @@
   background-color: #f0f0f0;
 }
 
+.project-link {
+  display: inline-block;
+  padding: 8px 12px;
+  font-size: 14px;
+  font-weight: bold;
+  text-align: center;
+  text-decoration: none;
+  color: #fff;
+  background-color: #007bff;
+  border: 1px solid #007bff;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.project-link:hover {
+  background-color: #0056b3;
+  border-color: #0056b3;
+}
+
 .description {
   background-color: #f8f8f8;
   padding: 10px;
