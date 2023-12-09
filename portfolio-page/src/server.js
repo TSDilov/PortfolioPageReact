@@ -96,7 +96,7 @@ app.delete('/api/projects/:id', (req, res) => {
     }
   } catch (error) {
     console.error('Error deleting project:', error);
-    res.status(500).json({ success: false, error: 'Internal Server Error' });
+    res.status(500).json({ success: false, error: error.message });
   }
 });
 
