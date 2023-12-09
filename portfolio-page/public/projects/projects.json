@@ -1,1 +1,14 @@
-[]
+[
+  {
+    "name": "C#_CleanArchitecture",
+    "description": "The Task Manager project is designed with scalability and maintainability in mind, using the following architectural elements:\n\nClean Architecture: The project is organized based on the Clean Architecture design principles, promoting separation of concerns and maintainability.\n\nMicroservices Ready: The solution is divided into two projects, laying the foundation for future microservices adoption.\n\nDatabase: PostgreSQL is used as the database system, integrated with Entity Framework Core for efficient data access.\n\nAPI and CQS: The API follows the Command Query Separation (CQS) pattern, implemented through Mediator to achieve a more organized and extensible codebase.",
+    "projectUrl": "https://github.com/TSDilov/CleanArchitectureWebProjectWithFoundationOfMicroserviceArchitecture",
+    "id": 1
+  },
+  {
+    "name": "Portfolio_React_Page",
+    "description": "Simple React page for listing different app projects",
+    "projectUrl": "https://github.com/TSDilov/PortfolioPageReact",
+    "id": 2
+  }
+]
